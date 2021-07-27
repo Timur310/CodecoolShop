@@ -16,7 +16,8 @@ Codecool Shop (Java + Jetty servlet)
 
 <h1>Pictures:</h1>
 
-<br>![alt text](https://github.com/Timur310/DungeonCrawl/blob/main/img/final_img_1.png?raw=true)</br>
+<br>![alt text](https://github.com/Timur310/CodecoolShop/blob/main/Images/kep1.png?raw=true)</br>
+<br>![alt text](https://github.com/Timur310/CodecoolShop/blob/main/Images/kep2.png?raw=true)</br>
+<br>![alt text](https://github.com/Timur310/CodecoolShop/blob/main/Images/kep1.png?raw=true)</br>
 
-<br>![alt text](https://github.com/Timur310/DungeonCrawl/blob/main/img/final_img_2.png?raw=true)</br>
 
