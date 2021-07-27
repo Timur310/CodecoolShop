@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layer.html :: head">
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <div th:replace="layer.html :: header"></div>
+<!--    <nav class="navbar navbar-light bg-light sticky-top shadow-sm">-->
+<!--        <div class="container-fluid d-flex justify-content-between">-->
+<!--            <div class="d-flex justify-content-evenly">-->
+<!--                <div th:if="${username == null}" class="px-1">-->
+<!--                    <button type="button" class="btn btn-warning btn-sm btn-own" onClick="loginButton()">login</button>-->
+<!--                </div>-->
+<!--                <div th:if="${username == null}" class="px-1">-->
+<!--                    <button type="button" class="btn btn-warning btn-sm btn-own" onClick="registrationButton()">register-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--                <div th:if="${username != null}" class="px-1">-->
+<!--                    <button type="button" class="btn btn-warning btn-sm btn-own" onClick="logoutButton()">log out-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--                <div th:if="${username != null}" th:text="${username}"></div>-->
+<!--            </div>-->
+<!--            <div class="dropdown">-->
+<!--&lt;!&ndash;                <span class="badge rounded-pill bg-primary card-length" id="cart-length"></span>&ndash;&gt;-->
+<!--                <button type="button" data-mdb-toggle="dropdown"-->
+<!--                        aria-expanded="false" class="btn btn-warning"><i class="fas fa-shopping-cart"></i>-->
+<!--                </button>-->
+<!--                <div class="dropdown-menu text-center shopping-items w-auto p-3">-->
+<!--                    <div id="shopping-list"></div>-->
+<!--                    <div>-->
+<!--                        <form th:action="@{/order}" th:method="GET">-->
+<!--                            <div class="col-xs-12 col-sm-6 col-md-6">-->
+<!--                                <br/>-->
+<!--                                <input type="submit" value="Checkout & Order summary" class="btn btn-success btn-rounded btn-own"/>-->
+<!--                            </div>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">Home</a>
+                    </li>
+<!--                    <li th:if="${username == null}" class="nav-item">-->
+                    <li th:if="${username != null}" class="nav-item">
+                        <a class="nav-link" th:href="@{/orders}">Orders</a>
+                    </li>
+                    <li th:if="${username != null}" class="nav-item">
+                        <a class="nav-link" href="/profile">Edit profile
+                        </a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <div th:if="${username == null}" class="px-1">
+                    <button type="button" class="btn btn-link px-3 me-2" onClick="loginButton()">login</button>
+                </div>
+                <div th:if="${username == null}" class="px-1">
+                    <button type="button" class="btn btn-primary me-3" onClick="registrationButton()">sign up for free
+                    </button>
+                </div>
+                <div th:if="${username != null && isAdmin}" class="px-1">
+                    <button type="button" class="btn btn-link px-3 me-2" onClick="adminPanel()">Admin panel
+                    </button>
+                </div>
+                <div th:if="${username != null}" class="px-1">
+                    <button type="button" class="btn btn-link px-3 me-2" onClick="logoutButton()">log out
+                    </button>
+                </div>
+                <div th:if="${username != null}" th:text="${username}"></div>
+                <!-- Icon -->
+                <a
+                        class="text-reset me-3 dropdown-toggle hidden-arrow"
+                        href="#"
+                        role="button"
+                        id="navbarDropdownMenuLink"
+                        data-mdb-toggle="dropdown"
+                        aria-expanded="false"
+                >
+                    <i class="fas fa-shopping-cart" data-mdb-toggle="dropdown"
+                       aria-expanded="false"></i>
+                    <span class="badge rounded-pill badge-notification bg-warning" id="cart-length"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end text-center shopping-items w-auto p-3">
+                    <div id="shopping-list"></div>
+                    <div>
+                        <form th:action="@{/order}" th:method="GET">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <br/>
+                                <input type="submit" value="Checkout & Order summary" class="btn btn-success btn-rounded btn-own"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+<!--                <ul-->
+<!--                        class="dropdown-menu dropdown-menu-end"-->
+<!--                        aria-labelledby="navbarDropdownMenuLink"-->
+<!--                >-->
+<!--                    <li>-->
+<!--                        <a class="dropdown-item" href="#">Some news</a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a class="dropdown-item" href="#">Another news</a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+    <!--    <div class="card shadow p-3 mb-5 bg-body rounded shopcard">-->
+    <div class="container shopcard">
+        <div class="py-3">
+            <div class="text-center">
+                <strong th:if="${category}" th:text="${category.name}">Category Title</strong>
+                <strong th:if="${supplierList}" th:text="${currentSupplier}">Category Title</strong>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-6 col-sm-3 text-center">
+                <form action="/" method="get">
+                    <select name="category" id="category" class="form-select"
+                            aria-label=".form-select-sm example"
+                            onchange="this.form.submit()">
+                        <option value="" selected disabled hidden>Select category</option>
+                        <option th:each="cat,iterStat : ${categories}" th:value="${cat.name.toLowerCase}"
+                                th:text="${cat.name}"></option>
+                    </select>
+                </form>
+            </div>
+            <div class="col-6 col-sm-3 text-center">
+                <form action="/" method="get">
+                    <select name="supplier" id="supplier" class="form-select"
+                            aria-label=".form-select-sm example"
+                            onchange="this.form.submit()">
+                        <option value="" selected disabled hidden>Select supplier</option>
+                        <option th:each="supplier,iterStat : ${supplierList}"
+                                th:value="${supplier.name.toLowerCase}"
+                                th:text="${supplier.name}"></option>
+                    </select>
+                </form>
+            </div>
+        </div>
+        <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+            <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+                <div class="col" id="products" th:each="prod,iterStat : ${products}">
+                    <!--                    <div class="card card-custom h-100 shadow-sm">-->
+                    <div class="card h-100 card-custom">
+                        <div class="hover-zoom">
+                            <img class="card-img-top bg-image" src="http://placehold.it/400x250/000/fff"
+                                 th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
+                        </div>
+                        <div class="label-top shadow-sm" th:text="${prod.getSupplierName()}"></div>
+                        <div class="card-body">
+                            <div class="clearfix mb-3">
+                                <span class="float-start badge rounded-pill bg-primary" th:text="${prod.name}">
+                                </span>
+                                <span class="float-end price-hp" th:text="${prod.getPrice()}">
+                                </span>
+                            </div>
+                            <h5 class="card-title" th:text="${prod.description}"></h5>
+                        </div>
+                        <div class="card-footer bg-transparent text-center border-0 my-4">
+                            <a th:attr="data-id=${prod.getId()}"
+                               class="btn btn-warning buy-btn btn-own mb-2">Add to cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="layer.html :: footer"></div>
+    <script src="/static/js/main.js" defer></script>
+    <!-- MDB -->
+    <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+    ></script>
+</body>
+</html>
